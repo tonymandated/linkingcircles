@@ -1,0 +1,11 @@
+{
+    "mcpServers": {
+        "laravel-boost": {
+            "command": "/usr/local/Cellar/php/8.5.4/bin/php",
+            "args": [
+                "/Applications/MAMP/htdocs/linkingcircles/artisan",
+                "boost:mcp"
+            ]
+        }
+    }
+}
