@@ -37,6 +37,26 @@
                         </a>
                     </li>
                 @endforeach
+                <li>
+                    <a
+                        href="{{ route('lms.home') }}"
+                        wire:navigate
+                        class="lc-nav-link"
+                    >
+                        LMS
+                    </a>
+                </li>
+                @auth
+                    <li>
+                        <a
+                            href="{{ route('dashboard') }}"
+                            wire:navigate
+                            class="lc-nav-link"
+                        >
+                            Dashboard
+                        </a>
+                    </li>
+                @endauth
             </ul>
         </nav>
     </div>
