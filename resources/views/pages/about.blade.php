@@ -10,7 +10,7 @@
 
         <div class="mt-10 grid gap-6 md:grid-cols-2">
             <article class="lc-card">
-                <h2 class="font-serif text-2xl font-semibold text-brand-heading">Our Mission</h2>
+                <h2 class="font-serif text-2xl font-semibold text-heading">Our Mission</h2>
                 <p class="mt-3 text-sm leading-7">
                     To equip students with globally competitive skills while preserving local context,
                     values, and cultural dignity.
@@ -18,7 +18,7 @@
             </article>
 
             <article class="lc-card">
-                <h2 class="font-serif text-2xl font-semibold text-brand-heading">Our Vision</h2>
+                <h2 class="font-serif text-2xl font-semibold text-heading">Our Vision</h2>
                 <p class="mt-3 text-sm leading-7">
                     A future where every learner has access to inclusive, life-changing education
                     regardless of geography.

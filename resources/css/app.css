@@ -8,7 +8,12 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-@layer theme {
+@theme {
+    --color-primary: #0170b9;
+    --color-heading: #3a3a3a;
+    --color-content: #4b4f58;
+    --color-surface: #f5f5f5;
+
     --color-zinc-50: #fafafa;
     --color-zinc-100: #f5f5f5;
     --color-zinc-200: #e5e5e5;
@@ -20,15 +25,6 @@
     --color-zinc-800: #262626;
     --color-zinc-900: #171717;
     --color-zinc-950: #0a0a0a;
-
-    --color-accent: var(--color-neutral-800);
-    --color-accent-content: var(--color-neutral-800);
-    --color-accent-foreground: var(--color-white);
-
-    --color-brand-primary: #0170b9;
-    --color-brand-heading: #3a3a3a;
-    --color-brand-body: #4b4f58;
-    --color-brand-surface: #f5f5f5;
 
     .dark {
         --color-accent: var(--color-white);
@@ -84,15 +80,15 @@
     }
 
     .lc-nav-link {
-        @apply text-sm font-medium text-brand-body dark:text-zinc-400 transition-colors hover:text-brand-heading dark:hover:text-white;
+        @apply text-sm font-medium text-content dark:text-zinc-400 transition-colors hover:text-heading dark:hover:text-white;
     }
 
     .lc-nav-link-active {
-        @apply text-brand-primary dark:text-white font-semibold;
+        @apply text-primary dark:text-white font-semibold;
     }
 
     .lc-section-title {
-        @apply font-serif text-3xl font-semibold tracking-tight text-brand-heading dark:text-white md:text-4xl;
+        @apply font-serif text-3xl font-semibold tracking-tight text-heading dark:text-white md:text-4xl;
     }
 
     .lc-card {

@@ -14,8 +14,8 @@
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="min-h-screen bg-brand-surface dark:bg-zinc-900 font-sans text-brand-body dark:text-zinc-400 antialiased">
-        <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:rounded-md focus:bg-white focus:px-3 focus:py-2 focus:text-sm focus:font-medium focus:text-brand-heading">
+    <body class="min-h-screen bg-surface dark:bg-zinc-900 font-sans text-content dark:text-zinc-400 antialiased">
+        <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:rounded-md focus:bg-white focus:px-3 focus:py-2 focus:text-sm focus:font-medium focus:text-heading">
             Skip to main content
         </a>
 

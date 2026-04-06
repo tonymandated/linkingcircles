@@ -8,17 +8,17 @@
 
         <div class="mt-10 grid gap-6 md:grid-cols-3">
             <article class="lc-card">
-                <h2 class="font-serif text-2xl font-semibold text-brand-heading">Virtual Learning</h2>
+                <h2 class="font-serif text-2xl font-semibold text-heading">Virtual Learning</h2>
                 <p class="mt-3 text-sm leading-7">Live and self-paced digital classrooms tailored for flexible progress.</p>
             </article>
 
             <article class="lc-card">
-                <h2 class="font-serif text-2xl font-semibold text-brand-heading">Teacher Training</h2>
+                <h2 class="font-serif text-2xl font-semibold text-heading">Teacher Training</h2>
                 <p class="mt-3 text-sm leading-7">Professional development tracks for teachers and school leaders.</p>
             </article>
 
             <article class="lc-card">
-                <h2 class="font-serif text-2xl font-semibold text-brand-heading">Cultural Heritage</h2>
+                <h2 class="font-serif text-2xl font-semibold text-heading">Cultural Heritage</h2>
                 <p class="mt-3 text-sm leading-7">Programs that connect language, arts, and identity with modern learning goals.</p>
             </article>
         </div>

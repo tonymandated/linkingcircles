@@ -8,15 +8,15 @@
 
         <div class="mt-10 grid gap-6 md:grid-cols-3">
             <article class="lc-card">
-                <h2 class="text-lg font-semibold text-brand-heading">Train</h2>
+                <h2 class="text-lg font-semibold text-heading">Train</h2>
                 <p class="mt-2 text-sm leading-7">Build confidence with practical modules and guided practice.</p>
             </article>
             <article class="lc-card">
-                <h2 class="text-lg font-semibold text-brand-heading">Equip</h2>
+                <h2 class="text-lg font-semibold text-heading">Equip</h2>
                 <p class="mt-2 text-sm leading-7">Provide tools and resources to apply learning immediately.</p>
             </article>
             <article class="lc-card">
-                <h2 class="text-lg font-semibold text-brand-heading">Coach</h2>
+                <h2 class="text-lg font-semibold text-heading">Coach</h2>
                 <p class="mt-2 text-sm leading-7">Sustain progress through mentorship and feedback cycles.</p>
             </article>
         </div>

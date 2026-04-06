@@ -28,7 +28,7 @@
         <!-- Logo / Brand -->
         <a href="{{ $isLms ? route('lms.home') : route('home') }}" class="inline-flex items-center gap-3 flex-shrink-0" wire:navigate>
             @if($isLms)
-                <span class="font-semibold text-brand-heading dark:text-white">LMS</span>
+                <span class="font-semibold text-heading dark:text-white">LMS</span>
             @else
                 <img
                     src="{{ asset('img/linking-circles-academy-logo.png') }}"
@@ -69,7 +69,7 @@
                     <a
                         href="{{ route('home') }}"
                         wire:navigate
-                        class="text-xs font-semibold uppercase tracking-wide text-brand-primary hover:text-brand-heading dark:hover:text-white transition-colors"
+                        class="text-xs font-semibold uppercase tracking-wide text-primary hover:text-heading dark:hover:text-white transition-colors"
                         title="Visit main website"
                     >
                         ← Main Site
@@ -79,7 +79,7 @@
                     <a
                         href="{{ route('lms.home') }}"
                         wire:navigate
-                        class="text-xs font-semibold uppercase tracking-wide text-brand-primary hover:text-brand-heading dark:hover:text-white transition-colors"
+                        class="text-xs font-semibold uppercase tracking-wide text-primary hover:text-heading dark:hover:text-white transition-colors"
                         title="Visit learning management system"
                     >
                         LMS →

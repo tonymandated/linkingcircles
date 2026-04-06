@@ -8,11 +8,11 @@
 
         <div class="mt-10 grid gap-6 md:grid-cols-2">
             <article class="lc-card">
-                <h2 class="text-lg font-semibold text-brand-heading">Instructional Design Foundations</h2>
+                <h2 class="text-lg font-semibold text-heading">Instructional Design Foundations</h2>
                 <p class="mt-2 text-sm leading-7">Plan lessons that are measurable, engaging, and learner-centered.</p>
             </article>
             <article class="lc-card">
-                <h2 class="text-lg font-semibold text-brand-heading">Inclusive Classroom Strategies</h2>
+                <h2 class="text-lg font-semibold text-heading">Inclusive Classroom Strategies</h2>
                 <p class="mt-2 text-sm leading-7">Support diverse student needs with practical teaching adaptations.</p>
             </article>
         </div>
