@@ -39,12 +39,27 @@
         --color-accent-content: var(--color-white);
         --color-accent-foreground: var(--color-neutral-800);
     }
+
+    [data-theme="high-contrast"] {
+        --color-brand-primary: #000080;
+        --color-brand-heading: #000000;
+        --color-brand-body: #000000;
+        --color-brand-surface: #ffffff;
+    }
+
+    [data-theme="high-contrast"] .dark {
+        --color-brand-primary: #ffffff;
+        --color-brand-heading: #ffffff;
+        --color-brand-body: #ffffff;
+        --color-brand-surface: #000000;
+    }
 }
 
 @layer base {
 
     html {
         --font-scale: 1;
+        font-size: calc(16px * var(--font-scale));
     }
 
     *,
