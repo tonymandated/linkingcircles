@@ -12,32 +12,12 @@
 
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
-    <body class="min-h-screen bg-zinc-50 text-zinc-900 antialiased">
+    <body class="min-h-screen bg-zinc-50 dark:bg-zinc-900 text-zinc-900 dark:text-zinc-100 antialiased">
         <a href="#main-content" class="sr-only focus:not-sr-only focus:absolute focus:left-4 focus:top-4 focus:rounded-md focus:bg-white focus:px-3 focus:py-2 focus:text-sm focus:font-semibold">
             Skip to main content
         </a>
 
-        <header class="border-b border-zinc-200 bg-white">
-            <div class="mx-auto flex w-full max-w-7xl items-center justify-between px-6 py-4 lg:px-8">
-                <a href="{{ route('lms.home') }}" class="font-semibold text-zinc-900">
-                    Linking Circles LMS
-                </a>
-
-                <div class="flex items-center gap-6">
-                    <nav aria-label="LMS navigation" class="flex items-center gap-4 text-sm">
-                        <a href="{{ route('lms.home') }}" class="hover:text-sky-700">Home</a>
-                        <a href="{{ route('lms.courses.index') }}" class="hover:text-sky-700">Courses</a>
-                        @auth
-                            <a href="{{ route('lms.admin.courses.index') }}" class="hover:text-sky-700">Admin</a>
-                        @endauth
-                    </nav>
-
-                    <div x-data="setupAccessibilityControls()" x-init="init()" class="border-l border-zinc-200 pl-6">
-                        <x-accessibility-controls />
-                    </div>
-                </div>
-            </div>
-        </header>
+        <x-unified-header />
 
         <main id="main-content" class="mx-auto w-full max-w-7xl px-6 py-10 lg:px-8">
             @if (session('status'))

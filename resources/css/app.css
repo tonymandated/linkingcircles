@@ -84,19 +84,19 @@
     }
 
     .lc-nav-link {
-        @apply text-sm font-medium text-brand-body transition-colors hover:text-brand-heading;
+        @apply text-sm font-medium text-brand-body dark:text-zinc-400 transition-colors hover:text-brand-heading dark:hover:text-white;
     }
 
     .lc-nav-link-active {
-        @apply text-brand-primary;
+        @apply text-brand-primary dark:text-white font-semibold;
     }
 
     .lc-section-title {
-        @apply font-serif text-3xl font-semibold tracking-tight text-brand-heading md:text-4xl;
+        @apply font-serif text-3xl font-semibold tracking-tight text-brand-heading dark:text-white md:text-4xl;
     }
 
     .lc-card {
-        @apply rounded-2xl border border-zinc-200 bg-white p-6 shadow-sm;
+        @apply rounded-2xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-800 p-6 shadow-sm dark:shadow-lg;
     }
 }
 
