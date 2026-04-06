@@ -8,9 +8,7 @@
 
 @custom-variant dark (&:where(.dark, .dark *));
 
-@theme {
-    --font-sans: 'Instrument Sans', ui-sans-serif, system-ui, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
-
+@layer theme {
     --color-zinc-50: #fafafa;
     --color-zinc-100: #f5f5f5;
     --color-zinc-200: #e5e5e5;
@@ -31,13 +29,14 @@
     --color-brand-heading: #3a3a3a;
     --color-brand-body: #4b4f58;
     --color-brand-surface: #f5f5f5;
-}
 
-@layer theme {
     .dark {
         --color-accent: var(--color-white);
         --color-accent-content: var(--color-white);
         --color-accent-foreground: var(--color-neutral-800);
+        --color-brand-heading: #e5e5e5;
+        --color-brand-body: #a3a3a3;
+        --color-brand-surface: #1a1a1a;
     }
 
     [data-theme="high-contrast"] {

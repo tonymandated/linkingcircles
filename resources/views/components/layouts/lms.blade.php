@@ -23,13 +23,19 @@
                     Linking Circles LMS
                 </a>
 
-                <nav aria-label="LMS navigation" class="flex items-center gap-4 text-sm">
-                    <a href="{{ route('lms.home') }}" class="hover:text-sky-700">Home</a>
-                    <a href="{{ route('lms.courses.index') }}" class="hover:text-sky-700">Courses</a>
-                    @auth
-                        <a href="{{ route('lms.admin.courses.index') }}" class="hover:text-sky-700">Admin</a>
-                    @endauth
-                </nav>
+                <div class="flex items-center gap-6">
+                    <nav aria-label="LMS navigation" class="flex items-center gap-4 text-sm">
+                        <a href="{{ route('lms.home') }}" class="hover:text-sky-700">Home</a>
+                        <a href="{{ route('lms.courses.index') }}" class="hover:text-sky-700">Courses</a>
+                        @auth
+                            <a href="{{ route('lms.admin.courses.index') }}" class="hover:text-sky-700">Admin</a>
+                        @endauth
+                    </nav>
+
+                    <div x-data="setupAccessibilityControls()" x-init="init()" class="border-l border-zinc-200 pl-6">
+                        <x-accessibility-controls />
+                    </div>
+                </div>
             </div>
         </header>
 
