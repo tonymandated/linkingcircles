@@ -41,23 +41,32 @@ This project has domain-specific skills available. You MUST activate the relevan
 - You must follow all existing code conventions used in this application. When creating or editing a file, check sibling files for the correct structure, approach, and naming.
 - Use descriptive names for variables and methods. For example, `isRegisteredForDiscounts`, not `discount()`.
 - Check for existing components to reuse before writing a new one.
+- In-app Blade / Flux navigation uses named routes with `wire:navigate` (see `resources/views/layouts/app/sidebar.blade.php` and `resources/views/components/settings/layout.blade.php`).
+- Models may use PHP attributes for configuration instead of `$fillable` / `$hidden` properties (see `app/Models/User.php`).
 
 ## Verification Scripts
 
 - Do not create verification scripts or tinker when tests cover that functionality and prove they work. Unit and feature tests are more important.
 - `composer test` runs lint + tests (`@lint:check` and `php artisan test`); use targeted `php artisan test --compact` runs while iterating.
+- `composer run dev` starts the full local stack together: `php artisan serve`, `php artisan queue:listen --tries=1 --timeout=0`, `php artisan pail --timeout=0`, and `npm run dev`.
 
 ## Application Structure & Architecture
 
 - Stick to existing directory structure; don't create new base folders without approval.
 - Do not change the application's dependencies without approval.
+- `bootstrap/app.php` registers the health check endpoint at `/up`.
 - Keep route organization consistent: top-level web routes live in `routes/web.php`, and settings/account routes are defined in `routes/settings.php` (required from `web.php`).
 - Settings pages are Livewire-driven (`Route::livewire(...)`) using components in `app/Livewire/Settings` with views in `resources/views/livewire/settings`.
+- Settings routes do not all share the same middleware: `settings/profile` is `auth` only, while `settings/appearance` and `settings/security` require both `auth` and `verified`; `security.edit` also conditionally applies `password.confirm` when Fortify's two-factor `confirmPassword` option is enabled.
+- Reuse the existing nested account/security components before adding more screens: `app/Livewire/Settings/DeleteUserForm.php`, `app/Livewire/Settings/TwoFactor/RecoveryCodes.php`, and their paired views under `resources/views/livewire/settings`.
 - Reuse existing validation concerns and auth actions before introducing new patterns (e.g., `app/Concerns/*ValidationRules.php`, `app/Actions/Fortify/*`).
+- Fortify auth pages are plain Blade views in `resources/views/livewire/auth`, registered from `app/Providers/FortifyServiceProvider.php`; they are not class-based Livewire page components.
+- `app/Providers/AppServiceProvider.php` is where app-wide defaults are centralized, including `CarbonImmutable`, destructive DB command protection in production, and production password defaults.
 
 ## Frontend Bundling
 
 - If the user doesn't see a frontend change reflected in the UI, it could mean they need to run `npm run build`, `npm run dev`, or `composer run dev`. Ask them.
+- Vite builds `resources/css/app.css` and `resources/js/app.js`; Tailwind v4 sources are declared in `resources/css/app.css`, including `resources/views/**` and Flux vendor stubs.
 
 ## Documentation Files
 
@@ -124,6 +133,7 @@ This project has domain-specific skills available. You MUST activate the relevan
 - Every change must be programmatically tested. Write a new test or update an existing test, then run the affected tests to make sure they pass.
 - Run the minimum number of tests needed to ensure code quality and speed. Use `php artisan test --compact` with a specific filename or filter.
 - Feature tests already apply `Illuminate\Foundation\Testing\RefreshDatabase` globally via `tests/Pest.php`; avoid duplicating that setup unless a test needs different behavior.
+- Feature tests run against in-memory SQLite (`phpunit.xml` sets `DB_CONNECTION=sqlite` and `DB_DATABASE=:memory:`).
 
 === laravel/core rules ===
 
@@ -150,6 +160,8 @@ This project has domain-specific skills available. You MUST activate the relevan
 - When creating models for tests, use the factories for the models. Check if the factory has custom states that can be used before manually setting up the model.
 - Faker: Use methods such as `$this->faker->word()` or `fake()->randomDigit()`. Follow existing conventions whether to use `$this->faker` or `fake()`.
 - When creating tests, make use of `php artisan make:test [options] {name}` to create a feature test, and pass `--unit` to create a unit test. Most tests should be feature tests.
+- Reuse `Tests\TestCase::skipUnlessFortifyHas()` for auth tests that depend on optional Fortify features, and mirror the existing pattern of enabling feature options inside the test when needed (for example `Features::twoFactorAuthentication(['confirm' => true, 'confirmPassword' => true])`).
+- Livewire settings tests use both class-based and alias-based testing depending on the component: `Livewire::test(Profile::class)` for page components and `Livewire::test('settings.delete-user-form')` for nested components.
 
 ## Vite Error
 
