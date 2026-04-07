@@ -27,17 +27,32 @@ class EnrollmentSeeder extends Seeder
         }
 
         foreach ($students as $student) {
-            // Enroll each student in a few random courses
-            $randomCourses = $courses->random(min(3, $courses->count()));
+            // Enroll each student in 2-4 random courses
+            $numberOfEnrollments = rand(2, min(4, $courses->count()));
+            $enrolledCourses = $courses->random($numberOfEnrollments);
 
-            foreach ($randomCourses as $course) {
-                Enrollment::firstOrCreate([
+            foreach ($enrolledCourses as $course) {
+                // Avoid duplicate enrollments
+                if (Enrollment::where('user_id', $student->id)->where('course_id', $course->id)->exists()) {
+                    continue;
+                }
+
+                // Simulate varied enrollment patterns
+                $enrollmentDate = now()->subDays(rand(5, 90));
+                $progress = rand(0, 100);
+
+                // Some students complete courses, some don't
+                $completedAt = null;
+                if ($progress === 100 && rand(0, 1)) {
+                    $completedAt = $enrollmentDate->copy()->addDays(rand(7, 45));
+                }
+
+                Enrollment::create([
                     'user_id' => $student->id,
                     'course_id' => $course->id,
-                ], [
-                    'enrolled_at' => now()->subDays(rand(1, 30)),
-                    'progress' => rand(0, 100),
-                    'completed_at' => rand(0, 1) ? now()->subDays(rand(1, 10)) : null,
+                    'enrolled_at' => $enrollmentDate,
+                    'progress' => $progress,
+                    'completed_at' => $completedAt,
                 ]);
             }
         }

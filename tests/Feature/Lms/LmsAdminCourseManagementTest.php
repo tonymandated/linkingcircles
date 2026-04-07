@@ -12,6 +12,11 @@ it('allows authenticated users to create, update, and delete courses', function 
     $user = User::factory()->create();
     $this->actingAs($user);
 
+    $this->get(route('lms.admin.courses.index'))
+        ->assertOk()
+        ->assertSee('data-backend-sidebar', false)
+        ->assertSee('Manage Courses');
+
     $this->post(route('lms.admin.courses.store'), [
         'title' => 'Foundations of Learning',
         'slug' => 'foundations-of-learning',

@@ -12,5 +12,10 @@ test('authenticated users can visit the dashboard', function () {
     $this->actingAs($user);
 
     $response = $this->get(route('dashboard'));
-    $response->assertOk();
+    $response
+        ->assertOk()
+        ->assertSee('data-backend-sidebar', false)
+        ->assertSee('Welcome to your dashboard')
+        ->assertSee('View Course Catalog')
+        ->assertDontSee('x-placeholder-pattern');
 });

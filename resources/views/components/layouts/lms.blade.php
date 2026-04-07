@@ -1,5 +1,9 @@
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
+    @php
+        $showBackendSidebar = auth()->check() && request()->routeIs('lms.admin.*');
+    @endphp
+
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -17,7 +21,7 @@
             Skip to main content
         </a>
 
-        <x-unified-header />
+        <x-unified-header :show-backend-sidebar-toggle="$showBackendSidebar" />
 
         <main id="main-content" class="mx-auto w-full max-w-7xl px-6 py-10 lg:px-8">
             @if (session('status'))
@@ -26,7 +30,19 @@
                 </p>
             @endif
 
-            {{ $slot }}
+            @if ($showBackendSidebar)
+                <div class="grid gap-8 lg:grid-cols-[280px_minmax(0,1fr)]">
+                    <aside>
+                        <x-backend.sidebar-menu />
+                    </aside>
+
+                    <div>
+                        {{ $slot }}
+                    </div>
+                </div>
+            @else
+                {{ $slot }}
+            @endif
         </main>
     </body>
 </html>

@@ -9,9 +9,15 @@ use Illuminate\Support\Collection;
 
 trait HasPermissions
 {
-    public function can(string $permission): bool
+    public function can($abilities, $arguments = []): bool
     {
-        return $this->allPermissions()->contains($permission);
+        if (is_string($abilities) && $arguments === []) {
+            return $this->allPermissions()->contains($abilities);
+        }
+
+        return app('Illuminate\\Contracts\\Auth\\Access\\Gate')
+            ->forUser($this)
+            ->check($abilities, $arguments);
     }
 
     public function hasRole(string $name): bool

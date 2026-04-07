@@ -1,5 +1,6 @@
 <?php
 
+use App\Models\Role;
 use App\Models\User;
 use Laravel\Fortify\Features;
 
@@ -64,4 +65,26 @@ test('users can logout', function () {
     $response->assertRedirect(route('home'));
 
     $this->assertGuest();
+});
+
+test('users with admin permissions are redirected to lms admin after login', function () {
+    $user = User::factory()->create();
+
+    $adminRole = Role::query()->create([
+        'name' => 'test_admin_role',
+        'label' => 'Test Admin Role',
+        'permissions' => ['dashboard.view'],
+        'is_system' => false,
+    ]);
+
+    $user->roles()->attach($adminRole);
+
+    $response = $this->post(route('login.store'), [
+        'email' => $user->email,
+        'password' => 'password',
+    ]);
+
+    $response
+        ->assertSessionHasNoErrors()
+        ->assertRedirect(route('lms.admin.courses.index'));
 });
